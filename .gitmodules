@@ -1,0 +1,3 @@
+[submodule "src/submodule-dir-example"]
+	path = src/submodule-dir-example
+	url = https://github.com/signaloid/Signaloid-Demo-Batteries-StateOfChargeEstimation.git
