@@ -1,7 +1,5 @@
 /*
- *	Authored 2022, Mikael Cognell.
- *
- *	Copyright (c) 2022, Signaloid.
+ *	Copyright (c) 2022–2024, Signaloid.
  *
  *	Permission is hereby granted, free of charge, to any person obtaining a copy
  *	of this software and associated documentation files (the "Software"), to deal
@@ -22,27 +20,22 @@
  *	SOFTWARE.
  */
 
+#include <uxhw.h>
 #include "batt.h"
-#include "estimation.h"
 
 int
 main(int argc, char * argv[])
 {
 
-	voltageDirectMapping();
+	const double	measuredVoltageMean = 2.5;
+	const double	measuredVoltageStandardDeviation = 0.1;
+	double		measuredVoltage;
+	double		stateOfCharge;
 
-	/*
-	 *	Coloumb counting with a 1000mAh battery.
-	 */
-	const double batteryCapacityMilliAh = 1000;
-	const double currentUniformRangeMin = 0.0;
-	const double currentUniformRangeMax = 0.300;
-	coulombCounting(batteryCapacityMilliAh, currentUniformRangeMin, currentUniformRangeMax);
+	measuredVoltage = UxHwDoubleGaussDist(measuredVoltageMean, measuredVoltageStandardDeviation);
+	stateOfCharge = voltageToSoc(measuredVoltage);
 
-	/*
-	 *	Bayesian estimation with a 1000mAh battery.
-	 */
-	bayesianEstimation(batteryCapacityMilliAh, currentUniformRangeMin, currentUniformRangeMax);
+	printf("The state of charge corresponding to the measured voltage of %lf Volts is %lf%%.\n", stateOfCharge);
 
 	return 0;
 }
