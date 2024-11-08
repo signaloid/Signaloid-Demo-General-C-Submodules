@@ -20,6 +20,8 @@
  *	SOFTWARE.
  */
 
+
+#include <stdio.h>
 #include <uxhw.h>
 #include "batt.h"
 
