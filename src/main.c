@@ -36,7 +36,7 @@ main(int argc, char * argv[])
 	measuredVoltage = UxHwDoubleGaussDist(measuredVoltageMean, measuredVoltageStandardDeviation);
 	stateOfCharge = voltageToSoc(measuredVoltage);
 
-	printf("The state of charge corresponding to the measured voltage of %lf Volts is %lf%%.\n", stateOfCharge);
+	printf("The state of charge corresponding to the measured voltage of %lf Volts is %lf%%.\n", measuredVoltage, stateOfCharge);
 
 	return 0;
 }
