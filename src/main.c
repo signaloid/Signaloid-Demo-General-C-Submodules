@@ -28,8 +28,7 @@
 int
 main(int argc, char * argv[])
 {
-
-	const double	measuredVoltageMean = 2.5;
+	const double	measuredVoltageMean = 3.75;
 	const double	measuredVoltageStandardDeviation = 0.1;
 	double		measuredVoltage;
 	double		stateOfCharge;
